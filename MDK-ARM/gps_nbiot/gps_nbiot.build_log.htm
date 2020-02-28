@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.12.0.0
+Copyright (C) 2014 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: yy yiyu, yy, LIC=S5IBS-LIUIF-GMZ99-43XFN-2EWBX-Q9HU3
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.12.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 (build 41)
+Assembler:       Armasm.exe V5.05 (build 41)
+Linker/Locator:  ArmLink.exe V5.05 (build 41)
+Library Manager: ArmAr.exe V5.05 (build 41)
+Hex Converter:   FromElf.exe V5.05 (build 41)
+CPU DLL:         SARMCM3.DLL V5.12.0.0
+Dialog DLL:      DCM.DLL V1.13.0.0
+    Target DLL: STLink\ST-LINKIII-KEIL_SWO.dll
+Dialog DLL:      TCM.DLL V1.14.2.0
+ 
+<h2>Project:</h2>
+C:\Users\yiyu\Desktop\一些毕业设计\NBiot -- yiyu\2_26\gps_nbiot\MDK-ARM\gps_nbiot.uvprojx
+Project File Date:  02/20/2020
+
+<h2>Output:</h2>
+Build target 'gps_nbiot'
+compiling main.c...
+../Src/main.c(242): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+                        BC28_ALIYUN_Senddata2(g_sendata_latitude, g_sendata_longtitude);
+../Src/main.c(242): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+                        BC28_ALIYUN_Senddata2(g_sendata_latitude, g_sendata_longtitude);
+../Src/main.c(262): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+                        BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
+../Src/main.c(262): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+                        BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
+../Src/main.c(262): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
+                        BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
+../Src/main.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=17704 RO-data=428 RW-data=48 ZI-data=2624  
+FromELF: creating hex file...
+"gps_nbiot\gps_nbiot.axf" - 0 Error(s), 5 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack
+                ARM::CMSIS:CORE:3.40.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 3.40.0
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\yiyu\Desktop\一些毕业设计\NBiot -- yiyu\2_26\gps_nbiot\MDK-ARM\RTE
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:3.40.0
+      Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
+Load "gps_nbiot\\gps_nbiot.axf" 
+Error: Flash Download failed  -  Target DLL has been cancelled
+Load "gps_nbiot\\gps_nbiot.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
