@@ -16,4 +16,6 @@ void BC28_UDP_Senddata(uint8_t* len,uint8_t *data);
 
 int BC28_ALIYUN_Init(void);
 void BC28_ALIYUN_Senddata1(uint8_t *temp_data, uint8_t *humi_data, uint8_t *voltage_data);
-void BC28_ALIYUN_Senddata2(uint8_t *latitude_data, uint8_t *longtitude_data);
+void BC28_ALIYUN_Senddata2(uint8_t *latitude_data, uint8_t *longtitude_data, uint8_t *rail_data);
+void BC28_ALIYUN_Recievedata(void);
+char is_translate_status(void);

@@ -5,13 +5,18 @@
 #define PRODUCEKEY "a1K7KsoyAYX"        //修改产品秘钥
 #define DEVICENAME "A001"           //修改设备名称
 #define DEVICESECRET "EdR2N2b75BLSRg8pcMIzBoiwg9XpMFgh" //修改设备秘钥
-#define SUBSCRIBE "/a1K7KsoyAYX/A001/user/get"      //订阅入口
-#define ISSUE "/sys/a1K7KsoyAYX/A001/thing/event/property/post"
+#define SUBSCRIBE "/a1K7KsoyAYX/A001/user/nodereddata"      //订阅入口
+#define ISSUE "/a1K7KsoyAYX/A001/user/nbiotdata"
 
 
 char *strx;
 char atstr[BUFLEN];//发送数据区
 int err = 0;//全局变量
+char translate_status = 0; 
+char is_translate_status()
+{
+	return translate_status;
+}
 
 //发送数据等待回应（重发机制）
 int send_data_ack(char *cmd, char *ack, __IO uint32_t nTime)
@@ -111,21 +116,23 @@ int BC28_ALIYUN_Init()
 		
 		//配置可选连接阿里云可选项?
 		memset(atstr,0,BUFLEN);
-    sprintf(atstr,"AT+QMTCFG=\"ALIAUTH\",0,\"%s\",\"%s\",\"%s\"\r\n",PRODUCEKEY,DEVICENAME,DEVICESECRET);
-    printf("atstr = %s \r\n",atstr);
+  		sprintf(atstr,"AT+QMTCFG=\"ALIAUTH\",0,\"%s\",\"%s\",\"%s\"\r\n",PRODUCEKEY,DEVICENAME,DEVICESECRET);
+   		printf("atstr = %s \r\n",atstr);
 		send_data_wait_ack(atstr,"OK",300); 
 	
 		send_data_wait_ack("AT+QMTOPEN=0,\"iot-as-mqtt.cn-shanghai.aliyuncs.com\",1883\r\n","+QMTOPEN: 0,0",300); //登录阿里云平台 
 		
 		memset(atstr,0,BUFLEN);
-    sprintf(atstr,"AT+QMTCONN=0,\"%s\"\r\n",DEVICENAME);
+   	sprintf(atstr,"AT+QMTCONN=0,\"%s\"\r\n",DEVICENAME);
     printf("atstr = %s \r\n",atstr);
 		send_data_wait_ack(atstr,"+QMTCONN: 0,0,0",300);//发送链接到阿里云
 		
-		memset(atstr,0,BUFLEN);
-    sprintf(atstr,"AT+QMTSUB=0,1,\"%s\",0 \r\n",SUBSCRIBE);
-    printf("atstr = %s \r\n",atstr);
-		send_data_wait_ack(atstr,"+QMTSUB: 0,1,0,1",300);//订阅
+	//	memset(atstr,0,BUFLEN);
+  //	sprintf(atstr,"AT+QMTSUB=0,1,\"%s\",0 \r\n",SUBSCRIBE);
+  // 	printf("atstr = %s \r\n",atstr);
+	//send_data_wait_ack(atstr,"+QMTSUB: 0,1,0,1",300);//订阅
+
+		translate_status = 1; 
 		return err;
 }
 
@@ -138,15 +145,17 @@ void BC28_ALIYUN_Senddata1(uint8_t *temp_data, uint8_t *humi_data, uint8_t *volt
     send_data(atstr,300);
 		
     memset(atstr,0,BUFLEN); //发送数据
-		sprintf(atstr,"{params:{temp:%s,humi:%s,voltage:%s}}",temp_data,humi_data,voltage_data);
+		sprintf(atstr,"{temp:%s,humi:%s,voltage:%s}",temp_data,humi_data,voltage_data);
     printf("atstr = %s \r\n",atstr);
     send_data(atstr,300);
 	
     HAL_Delay(30);
     HAL_UART_Transmit(&huart3, buf5, strlen(buf5), 30); 
+	
+		
 }
 
-void BC28_ALIYUN_Senddata2(uint8_t *latitude_data, uint8_t *longtitude_data)
+void BC28_ALIYUN_Senddata2(uint8_t *latitude_data, uint8_t *longtitude_data, uint8_t *rail_data)
 {	
 	char buf5[]={0x1A,0x0D,0x0A};
     memset(atstr,0,BUFLEN); //发送数据命令
@@ -155,12 +164,22 @@ void BC28_ALIYUN_Senddata2(uint8_t *latitude_data, uint8_t *longtitude_data)
     send_data(atstr,300);
 		
     memset(atstr,0,BUFLEN); //发送数据
-		sprintf(atstr,"{params:{latitude:%s,longtitude:%s}}",latitude_data,longtitude_data);
+		sprintf(atstr,"{latitude:%s,longtitude:%s,inrail:%s}",latitude_data,longtitude_data,rail_data);
     printf("atstr = %s \r\n",atstr);
     send_data(atstr,300);
 	
     HAL_Delay(30);
     HAL_UART_Transmit(&huart3, buf5, strlen(buf5), 30); 
+		
 }
+
+void BC28_ALIYUN_Recievedata()
+{
+		memset(atstr,0,BUFLEN);
+   	sprintf(atstr,"AT+QMTSUB=0,1,\"%s\",0\r\n",SUBSCRIBE);
+   	printf("atstr = %s \r\n",atstr);
+		send_data_wait_ack(atstr,"+QMTSUB: 0,1,0,1",300);//订阅?
+}
+
 
 

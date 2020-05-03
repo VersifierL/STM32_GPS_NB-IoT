@@ -156,6 +156,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		time_tick++;
 		if(time_tick % 1 == 0)
 		{
+			LED_handle();
 			Time_Tick.time_1s = 1;
 		}
 		if(time_tick % 15 == 0)

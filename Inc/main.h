@@ -34,6 +34,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 extern uint8_t g_receive_data[10];
 extern uint8_t g_receive_nbiot_data[10];
+extern uint8_t g_receive_uart_data[10];
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

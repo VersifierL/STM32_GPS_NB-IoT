@@ -34,6 +34,7 @@ typedef struct
 {
 	uint8_t GPS_Buffer[GPS_BUFFER_LENGTH];
 	uint8_t is_get_data;
+	uint8_t is_fixed_position;
 	uint16_t time_year;
   uint16_t time_month;
   uint16_t time_day;
@@ -49,8 +50,30 @@ typedef struct
 	
 }GPSDATA;
 
-extern GPSDATA GPS_Data;
+typedef struct 
+{
+	uint8_t GPS_Buffer[GPS_BUFFER_LENGTH];
+  int32_t lat_one;
+  int32_t lon_one;
+	int32_t lat_two;
+	int32_t lon_two;
+	int32_t in_rail;
+}GPSDATA_TEST;
 
+typedef struct 
+{
+	uint8_t buffer[GPS_BUFFER_LENGTH];
+	uint8_t is_get_data;
+  int32_t lat;
+  int32_t lon;
+}UART_DATA;
+
+extern GPSDATA GPS_Data;
+extern GPSDATA_TEST GPS_Data_Test;
+extern UART_DATA Uart_Data;
+extern uint8_t g_start_receive_nbiot;
+
+extern uint8_t test_buffer[USART_REC_LEN];
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;

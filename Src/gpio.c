@@ -20,7 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
-
+#include "BC28.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
@@ -70,6 +70,29 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
+
+void LED_handle()
+{
+  if(is_translate_status())
+  {
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+  }
+  else
+  {
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_4);
+  }
+	
+	if(GPS_Data_Test.in_rail == 0 && GPS_Data.lat != 0 && GPS_Data.lon != 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_SET);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_6, GPIO_PIN_RESET);
+	}
+}
 
 /* USER CODE END 2 */
 

@@ -118,6 +118,11 @@ uint32_t get_voltage_value()
 		HAL_ADC_PollForConversion(&hadc1, 10);//等待采集结束
 		voltage_value = HAL_ADC_GetValue(&hadc1);//获取ADC值
 		HAL_ADC_Stop(&hadc1);//结束采集
+		if(voltage_value > 2600) //限幅
+			voltage_value = 2600;
+		if(voltage_value < 1900)
+			voltage_value = 1900;
+		voltage_value = (int)((voltage_value-2200)/7);
 		return voltage_value;
 }
 /* USER CODE END 1 */

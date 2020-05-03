@@ -4,6 +4,7 @@
 "gps_nbiot\dht11.o"
 "gps_nbiot\delay.o"
 "gps_nbiot\bc28.o"
+"gps_nbiot\flash.o"
 "gps_nbiot\main.o"
 "gps_nbiot\gpio.o"
 "gps_nbiot\adc.o"

@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/yiyu/Desktop/一些毕业设计/NBiot -- yiyu/code/gps_nbiot/Inc
+HeaderPath=C:/Users/yiyu/Desktop/GraduationProject/NBiot -- yiyu/STM32+GPS+NB-IoT/gps_nbiot/Inc
 HeaderFiles=gpio.h;tim.h;usart.h;stm32f1xx_it.h;stm32f1xx_hal_conf.h;main.h;adc.h;
-SourcePath=C:/Users/yiyu/Desktop/一些毕业设计/NBiot -- yiyu/code/gps_nbiot/Src
+SourcePath=C:/Users/yiyu/Desktop/GraduationProject/NBiot -- yiyu/STM32+GPS+NB-IoT/gps_nbiot/Src
 SourceFiles=gpio.c;tim.c;usart.c;stm32f1xx_it.c;stm32f1xx_hal_msp.c;main.c;adc.c;
 
 [PreviousLibFiles]

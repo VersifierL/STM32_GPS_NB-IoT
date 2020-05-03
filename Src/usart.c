@@ -22,11 +22,20 @@
 
 /* USER CODE BEGIN 0 */
 GPSDATA GPS_Data;
+GPSDATA_TEST GPS_Data_Test = { //初始化电子围栏
+	.lat_one = 2300000,
+  .lon_one = 11600000,
+	.lat_two = 2400000,
+	.lon_two = 11700000
+};
+UART_DATA Uart_Data;
 uint16_t receive_point = 0;
 uint16_t receive_nbiot_point = 0;
+uint16_t receive_uart_point = 0;
+uint8_t g_start_receive_nbiot = 0;
 uint8_t  USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
 uint8_t  USART_RX_NBIOT_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
-
+uint8_t  USART_RX_UART_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
 
 //重定向printf
 int fputc(int ch, FILE *f)
@@ -156,6 +165,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    /* USART2 interrupt Init */
+    HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USART2_IRQn);
   /* USER CODE BEGIN USART2_MspInit 1 */
 
   /* USER CODE END USART2_MspInit 1 */
@@ -229,6 +241,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
 
+    /* USART2 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(USART2_IRQn);
   /* USER CODE BEGIN USART2_MspDeInit 1 */
 
   /* USER CODE END USART2_MspDeInit 1 */
@@ -256,6 +270,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 } 
 
 /* USER CODE BEGIN 1 */
+uint8_t recieve_tmp_last;
+uint8_t recieve_tmp_next;
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	//GPS数据接收
@@ -281,15 +297,53 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		HAL_UART_Receive_IT(&huart1, g_receive_data, 1);
 		
 	}
-
+	//调试信息
+	if(huart -> Instance == USART2)
+	{
+		if(g_receive_uart_data[0] == '$')
+		{
+			receive_uart_point = 0;
+		}
+		USART_RX_UART_BUF[receive_uart_point++] = g_receive_uart_data[0]; //数据存到buf里
+		if(USART_RX_UART_BUF[0] == '$' && USART_RX_UART_BUF[1] == 'A' && USART_RX_UART_BUF[2] == 'T' && USART_RX_UART_BUF[3] == '+') 
+		{
+			if(g_receive_uart_data[0] == '\n')									   
+			{
+				memcpy(Uart_Data.buffer,USART_RX_UART_BUF, receive_uart_point);//将数据存到解析BUF
+				Uart_Data.is_get_data = 1;
+				receive_uart_point  = 0;
+				memset(USART_RX_UART_BUF, 0, USART_REC_LEN);      //清空BUF区
+			}
+		}
+		HAL_UART_Receive_IT(&huart2, g_receive_uart_data, 1);
+	}
+	
 	//NB-iot数据接收处理
   if(huart -> Instance == USART3)
   {
+    recieve_tmp_last = recieve_tmp_next; //储存上一个字符
+    recieve_tmp_next = g_receive_nbiot_data[0]; //存储当前字符
+    if(recieve_tmp_last == 'C' && recieve_tmp_next == 'V') //识别RECV
+		{
+			receive_nbiot_point = 0;
+			g_start_receive_nbiot = 1;
+		}
     USART_RX_NBIOT_BUF[receive_nbiot_point++] =  g_receive_nbiot_data[0];
-    if(receive_nbiot_point>=USART_REC_LEN-1)
+    if(USART_RX_NBIOT_BUF[0] == 'V' && USART_RX_NBIOT_BUF[1] == ':') //识别version
+		{
+      if(recieve_tmp_last == 'v' && recieve_tmp_next == 'e')
       {
+        memcpy(GPS_Data_Test.GPS_Buffer, USART_RX_NBIOT_BUF, receive_nbiot_point);//将数据存到解析BUF
+				set_gps_data(); 
+        g_start_receive_nbiot = 0;
         receive_nbiot_point = 0;
       }
+    }
+    if(receive_nbiot_point>=USART_REC_LEN-1)
+    {
+        receive_nbiot_point = 0;
+    }
+    
     HAL_UART_Receive_IT(&huart3, g_receive_nbiot_data, 1);
   }
 
