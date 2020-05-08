@@ -495,12 +495,13 @@ ARM Macro Assembler    Page 8
   322 0000001C                 END
               00000000 
               00000000 
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=gps_nbio
-t\startup_stm32f103xb.d -ogps_nbiot\startup_stm32f103xb.o -IC:\Users\yiyu\Deskt
-op\论文资料\software\MDK-ARM\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\In
-clude -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include --predefine
-="__MICROLIB SETA 1" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 
-1" --list=startup_stm32f103xb.lst startup_stm32f103xb.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=gps_nbiot\startup_stm32f103xb.d -ogps_nbiot\startup_stm32f103xb.o 
+-I"C:\Users\yy\Desktop\新建文件夹 (2)\STM32_GPS_NB-IoT\MDK-ARM\RTE" -IC:\Keil_v
+5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_D
+FP\2.3.0\Device\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_
+VERSION SETA 518" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" 
+--list=startup_stm32f103xb.lst startup_stm32f103xb.s
 
 
 
@@ -1207,4 +1208,4 @@ Symbol: __main
       At line 152 in file startup_stm32f103xb.s
 Comment: __main used once
 2 symbols
-405 symbols in table
+406 symbols in table

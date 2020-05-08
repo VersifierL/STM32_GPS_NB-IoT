@@ -3,91 +3,90 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: μVision V5.12.0.0
-Copyright (C) 2014 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: yy yiyu, yy, LIC=S5IBS-LIUIF-GMZ99-43XFN-2EWBX-Q9HU3
+IDE-Version: μVision V5.18a
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: yy yy, yy, LIC=2TTFW-QWDTS-22PL4-F49J4-N80HB-K0FEK
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.12.0.0
+Toolchain:       MDK-ARM Professional  Version: 5.18a
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.05 (build 41)
-Assembler:       Armasm.exe V5.05 (build 41)
-Linker/Locator:  ArmLink.exe V5.05 (build 41)
-Library Manager: ArmAr.exe V5.05 (build 41)
-Hex Converter:   FromElf.exe V5.05 (build 41)
-CPU DLL:         SARMCM3.DLL V5.12.0.0
-Dialog DLL:      DCM.DLL V1.13.0.0
-    Target DLL: STLink\ST-LINKIII-KEIL_SWO.dll
-Dialog DLL:      TCM.DLL V1.14.2.0
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.18a
+Dialog DLL:      DCM.DLL V1.13.6.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.8.0
  
 <h2>Project:</h2>
-C:\Users\yiyu\Desktop\论文资料\software\MDK-ARM\gps_nbiot.uvprojx
-Project File Date:  04/19/2020
+C:\Users\yy\Desktop\新建文件夹 (2)\STM32_GPS_NB-IoT\MDK-ARM\gps_nbiot.uvprojx
+Project File Date:  05/07/2020
 
 <h2>Output:</h2>
-Build target 'gps_nbiot'
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'gps_nbiot'
+assembling startup_stm32f103xb.s...
+compiling gps_handle.c...
+..\Src\gps_handle.c(170): warning:  #223-D: function "split_string" declared implicitly
+  			cnt = split_string('+', ',', Uart_Data.buffer, p_group, 20); //??',''/'?指詈???
+..\Src\gps_handle.c(166): warning:  #550-D: variable "cnt" was set but never used
+  		int cnt;
+..\Src\gps_handle.c: 2 warnings, 0 errors
+compiling dht11.c...
+compiling delay.c...
+compiling BC28.c...
+compiling flash.c...
+compiling adc.c...
 compiling gpio.c...
-linking...
-Program Size: Code=18688 RO-data=428 RW-data=340 ZI-data=3164  
-FromELF: creating hex file...
-"gps_nbiot\gps_nbiot.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+compiling tim.c...
+../Src/tim.c(159): warning:  #223-D: function "LedHandle" declared implicitly
+  			LedHandle();
+../Src/tim.c: 1 warning, 0 errors
+compiling stm32f1xx_it.c...
+compiling usart.c...
+../Src/usart.c(347): error:  #20: identifier "g_receive_nbiot_data" is undefined
+      HAL_UART_Receive_IT(&huart3, (uint8_t *)g_receive_nbiot_data, 1);
+../Src/usart.c: 0 warnings, 1 error
+compiling stm32f1xx_hal_gpio_ex.c...
+compiling stm32f1xx_hal_msp.c...
+compiling stm32f1xx_hal_adc.c...
+compiling stm32f1xx_hal_adc_ex.c...
+compiling stm32f1xx_hal_tim.c...
+compiling stm32f1xx_hal_tim_ex.c...
+compiling stm32f1xx_hal_uart.c...
+compiling stm32f1xx_hal.c...
+compiling stm32f1xx_hal_rcc_ex.c...
+compiling stm32f1xx_hal_rcc.c...
+compiling stm32f1xx_hal_dma.c...
+compiling stm32f1xx_hal_cortex.c...
+compiling stm32f1xx_hal_gpio.c...
+compiling stm32f1xx_hal_pwr.c...
+compiling stm32f1xx_hal_flash_ex.c...
+compiling stm32f1xx_hal_flash.c...
+compiling system_stm32f1xx.c...
+"gps_nbiot\gps_nbiot.axf" - 1 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack
-                ARM::CMSIS:CORE:3.40.0
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 3.40.0
+   * Component: CORE Version: 4.3.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\yiyu\Desktop\论文资料\software\MDK-ARM\RTE
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+  C:\Users\yy\Desktop\新建文件夹 (2)\STM32_GPS_NB-IoT\MDK-ARM\RTE
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.3.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:3.40.0
-      Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
-Load "gps_nbiot\\gps_nbiot.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
+   * Component: ARM::CMSIS:CORE:4.3.0
+Target not created.
+Build Time Elapsed:  00:00:42
 </pre>
 </body>
 </html>
-                     BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
-../Src/main.c(295): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
-                          BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
-../Src/main.c(295): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "uint8_t *"
-                          BC28_ALIYUN_Senddata1(g_sendata_temp, g_sendata_humi, g_sendata_voltage);
-../Src/main.c: 7 warnings, 0 errors
-compiling gpio.c...
-linking...
-Program Size: Code=18672 RO-data=428 RW-data=340 ZI-data=3164  
-FromELF: creating hex file...
-"gps_nbiot\gps_nbiot.axf" - 0 Error(s), 7 Warning(s).
-
-<h2>Software Packages used:</h2>
-
-Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack
-                ARM::CMSIS:CORE:3.40.0
-                CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 3.40.0
-
-<h2>Collection of Component include folders:</h2>
-  C:\Users\yiyu\Desktop\论文资料\software\MDK-ARM\RTE
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-
-   * Component: ARM::CMSIS:CORE:3.40.0
-      Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
-Load "gps_nbiot\\gps_nbiot.axf" 
-Error: Flash Download failed  -  Target DLL has been cancelled
-Load "gps_nbiot\\gps_nbiot.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
