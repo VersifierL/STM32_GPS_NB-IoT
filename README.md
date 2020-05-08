@@ -1,14 +1,11 @@
 # STM32-GPS-NB-IoT
 graduation project
 
-�����Ŀ���ұ�ҵ��Ƶ���Ŀ������ʱ��ȽϽ������Ի��кܶ�������Ƶĵط�����ʱ���ٽ����Ż���
+这个项目是我毕业设计的题目，由于时间比较紧，所以还有很多可以完善的地方，有时间再进行优化。
 
-ʹ�õ��ļ�����
+使用到的技术有
 
-STM32 -- CubeMX
-Keil
+STM32 -- CubeMX，Keil
 PCB -- Altium Designer
-
-��ҳ -- NodeRed
-
-�ֻ�app -- Andriod Studio
+网页 -- NodeRed
+手机app -- Andriod Studio（由于不慎丢失，目前只剩半成品的，bug太多，就不上传了）
