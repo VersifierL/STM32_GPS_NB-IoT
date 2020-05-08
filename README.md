@@ -5,10 +5,10 @@ graduation project
 
 使用到的技术有
 
-STM32 -- CubeMX
-Keil
+STM32 -- CubeMX，Keil
+
 PCB -- Altium Designer
 
 网页 -- NodeRed
 
-手机app -- Andriod Studio
+手机app -- Andriod Studio （不慎丢失了代码，只剩下半成品的，bug有点多就不上传了）

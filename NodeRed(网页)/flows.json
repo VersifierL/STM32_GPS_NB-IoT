@@ -1,0 +1,950 @@
+[
+    {
+        "id": "67e501bd.b823a",
+        "type": "tab",
+        "label": "流程1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b5dcd70f.4713e",
+        "type": "mqtt in",
+        "z": "67e501bd.b823a",
+        "name": "mqtt",
+        "topic": "/a1K7KsoyAYX/NodeRed/user/nbiotdata",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "59d79d2e.70bb4c",
+        "x": 50,
+        "y": 400,
+        "wires": [
+            [
+                "97650d86.48ba7",
+                "2b085a2d.919456",
+                "90e73819.f3d54",
+                "ff5b15f2.b77c18",
+                "60bfab91.d7ce74",
+                "633b9d9c.8af70c",
+                "41becab.7f49434"
+            ]
+        ]
+    },
+    {
+        "id": "b932f060.feb188",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "temp",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "4b6630b1.54722",
+                "6205c5af.4cf3cc"
+            ]
+        ]
+    },
+    {
+        "id": "4b6630b1.54722",
+        "type": "ui_chart",
+        "z": "67e501bd.b823a",
+        "name": "温度",
+        "group": "183e06b3.db1179",
+        "order": 2,
+        "width": 4,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f7af9e80.920718",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "humi",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.humi",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 320,
+        "wires": [
+            [
+                "66331cb6.4d5eec",
+                "231232dc.1fcfee"
+            ]
+        ]
+    },
+    {
+        "id": "66331cb6.4d5eec",
+        "type": "ui_chart",
+        "z": "67e501bd.b823a",
+        "name": "湿度",
+        "group": "183e06b3.db1179",
+        "order": 15,
+        "width": 4,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ca7cc05.06a10c",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "value",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "46fbe9a0.0c417"
+            ]
+        ]
+    },
+    {
+        "id": "46fbe9a0.0c417",
+        "type": "ui_chart",
+        "z": "67e501bd.b823a",
+        "name": "经度",
+        "group": "183e06b3.db1179",
+        "order": 21,
+        "width": 5,
+        "height": 4,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "180",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c39f2e54.167728",
+        "type": "ui_chart",
+        "z": "67e501bd.b823a",
+        "name": "纬度",
+        "group": "183e06b3.db1179",
+        "order": 20,
+        "width": 5,
+        "height": 4,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "180",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "231232dc.1fcfee",
+        "type": "ui_gauge",
+        "z": "67e501bd.b823a",
+        "name": "湿度",
+        "group": "183e06b3.db1179",
+        "order": 14,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "湿度",
+        "label": "%",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6205c5af.4cf3cc",
+        "type": "ui_gauge",
+        "z": "67e501bd.b823a",
+        "name": "温度",
+        "group": "183e06b3.db1179",
+        "order": 1,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "温度",
+        "label": "C",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 650,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "fe2d6aa8.d7829",
+        "type": "ui_gauge",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "group": "183e06b3.db1179",
+        "order": 6,
+        "width": 4,
+        "height": 4,
+        "gtype": "compass",
+        "title": "经度",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 770,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "debcae53.6c6b",
+        "type": "ui_gauge",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "group": "183e06b3.db1179",
+        "order": 4,
+        "width": 4,
+        "height": 4,
+        "gtype": "compass",
+        "title": "纬度",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 790,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "cc57ca33.8272b8",
+        "type": "ui_gauge",
+        "z": "67e501bd.b823a",
+        "name": "电量",
+        "group": "183e06b3.db1179",
+        "order": 25,
+        "width": 4,
+        "height": 3,
+        "gtype": "gage",
+        "title": "电量",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 650,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1acda2ec.8c065d",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "value",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 560,
+        "wires": [
+            [
+                "c39f2e54.167728"
+            ]
+        ]
+    },
+    {
+        "id": "cd987f4c.624588",
+        "type": "function",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "func": "var value = { payload: msg.payload.latitude/100000.0 };\nreturn value;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 560,
+        "wires": [
+            [
+                "debcae53.6c6b",
+                "1acda2ec.8c065d"
+            ]
+        ]
+    },
+    {
+        "id": "5020e931.09415",
+        "type": "function",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "func": "var value = { payload: msg.payload.longtitude/100000.0 };\nreturn value;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 440,
+        "wires": [
+            [
+                "2ca7cc05.06a10c",
+                "fe2d6aa8.d7829"
+            ]
+        ]
+    },
+    {
+        "id": "97650d86.48ba7",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.inrail",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 680,
+        "wires": [
+            [
+                "70b1132f.a0a214"
+            ],
+            [
+                "a4f78b40.29335"
+            ]
+        ]
+    },
+    {
+        "id": "70b1132f.a0a214",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "在围栏",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 640,
+        "wires": [
+            [
+                "c615cb5c.778b78"
+            ]
+        ]
+    },
+    {
+        "id": "a4f78b40.29335",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "不在围栏",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 720,
+        "wires": [
+            [
+                "4304310.52053d"
+            ]
+        ]
+    },
+    {
+        "id": "c615cb5c.778b78",
+        "type": "ui_audio",
+        "z": "67e501bd.b823a",
+        "d": true,
+        "name": "蜂鸣器",
+        "group": "183e06b3.db1179",
+        "voice": "zh-CN",
+        "always": "",
+        "x": 870,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "4304310.52053d",
+        "type": "ui_audio",
+        "z": "67e501bd.b823a",
+        "name": "蜂鸣器",
+        "group": "183e06b3.db1179",
+        "voice": "zh-CN",
+        "always": "",
+        "x": 870,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "b27664d3.49b8a",
+        "type": "mqtt out",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "topic": "/a1K7KsoyAYX/NodeRed/user/nodereddata",
+        "qos": "0",
+        "retain": "true",
+        "broker": "59d79d2e.70bb4c",
+        "x": 530,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "cdd68a04.c334d",
+        "type": "ui_button",
+        "z": "67e501bd.b823a",
+        "name": "bottoon",
+        "group": "183e06b3.db1179",
+        "order": 32,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"params\":{\"coordinate_set\":{\"longtitude_two\":100,\"latitude_one\":80,\"latitude_two\":90,\"longtitude_one\":110},\"version\":{\"gyy\":1}}}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 160,
+        "y": 840,
+        "wires": [
+            [
+                "b27664d3.49b8a",
+                "9c1297bf.73f6c"
+            ]
+        ]
+    },
+    {
+        "id": "9c1297bf.73f6c",
+        "type": "debug",
+        "z": "67e501bd.b823a",
+        "d": true,
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 430,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "6c92422c.9cb65c",
+        "type": "ui_text_input",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "group": "183e06b3.db1179",
+        "order": 33,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 160,
+        "y": 740,
+        "wires": [
+            [
+                "b27664d3.49b8a"
+            ]
+        ]
+    },
+    {
+        "id": "afec6e38.2926f8",
+        "type": "change",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "voltage",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.voltage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 100,
+        "wires": [
+            [
+                "175543bd.da4b94",
+                "cc57ca33.8272b8"
+            ]
+        ]
+    },
+    {
+        "id": "175543bd.da4b94",
+        "type": "ui_chart",
+        "z": "67e501bd.b823a",
+        "name": "电量",
+        "group": "183e06b3.db1179",
+        "order": 26,
+        "width": 4,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2b085a2d.919456",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.temp",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "afec6e38.2926f8"
+            ]
+        ]
+    },
+    {
+        "id": "90e73819.f3d54",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.humi",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 200,
+        "wires": [
+            [
+                "b932f060.feb188"
+            ]
+        ]
+    },
+    {
+        "id": "ff5b15f2.b77c18",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.voltage",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "f7af9e80.920718"
+            ]
+        ]
+    },
+    {
+        "id": "60bfab91.d7ce74",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.longtitude",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 440,
+        "wires": [
+            [
+                "5020e931.09415"
+            ]
+        ]
+    },
+    {
+        "id": "633b9d9c.8af70c",
+        "type": "switch",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "property": "payload.latitude",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "cd987f4c.624588"
+            ]
+        ]
+    },
+    {
+        "id": "41becab.7f49434",
+        "type": "debug",
+        "z": "67e501bd.b823a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "59d79d2e.70bb4c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "WisdomRanch",
+        "broker": "tcp://a1K7KsoyAYX.iot-as-mqtt.cn-shanghai.aliyuncs.com",
+        "port": "1883",
+        "clientid": "NodeRed|securemode=3,signmethod=hmacsha1|",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "183e06b3.db1179",
+        "type": "ui_group",
+        "z": "",
+        "name": "WisdomRanch",
+        "tab": "1fc7e54c.cb3d73",
+        "disp": true,
+        "width": "26",
+        "collapse": false
+    },
+    {
+        "id": "1fc7e54c.cb3d73",
+        "type": "ui_tab",
+        "z": "",
+        "name": "WisdomRanch",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
